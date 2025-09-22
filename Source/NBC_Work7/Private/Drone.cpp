@@ -90,7 +90,7 @@ void ADrone::Tick(float DeltaTime)
 		CurrentVelocity.Z = 0;
 	}
 
-	AddActorWorldOffset(FVector(0.f, 0.f, CurrentVelocity.Z) * DeltaTime);
+	AddActorWorldOffset(FVector(0.f, 0.f, CurrentVelocity.Z) * DeltaTime, true);
 	
 	// LineTrace Ãâ·Â
 	//DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1.f);
@@ -129,7 +129,7 @@ void ADrone::Move(const FInputActionValue& Value)
 	if (!MoveInput.IsNearlyZero())
 	{
 		FVector Offset(MoveInput * MoveSpeed * GetWorld()->GetDeltaSeconds() * (bIsGround ? 1.f : 0.7f));
-		AddActorLocalOffset(Offset);
+		AddActorLocalOffset(Offset, true);
 	}
 }
 
